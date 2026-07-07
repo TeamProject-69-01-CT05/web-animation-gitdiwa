@@ -1,0 +1,64 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/*เดินจากในลิฟต์
+/* 🚶‍♂️ แอนิเมชันเดินลงมา โดยขยับเฉพาะแกน Y เท่านั้น (แกน X อยู่ตรงกลางจอเสมอ) */
+@keyframes walkDownToBottom {
+  0% {
+    /* เริ่มต้น: ดึงตัวบ๊อบขึ้นไปด้านบน (แถวๆ ประตูลิฟต์) */
+    transform: translateY(1vh); 
+  }
+  100% {
+    /* สิ้นสุด: ให้บ๊อบเดินลงมาจนทะลุขอบล่างจอออกไป */
+    transform: translateY(100vh); 
+  }
+}
+
+.animate-walk-down {
+  animation: walkDownToBottom 6s linear forwards !important;
+}
+
+/*เดินจากในลิฟต์ > ไปที่โต๊ะทำงาน*/
+
+@keyframes walkToNontDesk {
+  0% {
+    transform: translate(calc(-50% - 12vw), calc(-50% + -1vh));
+  }
+  35% {
+    transform: translate(calc(-50% + 18vw), calc(-50% + -1vh));
+  }
+  70% {
+    transform: translate(calc(-50% + 18vw), calc(-50% + 21vh));
+  }
+  100% {
+    transform: translate(calc(-50% + 31vw), calc(-50% + 21vh));
+  }
+}
+
+.animate-walk-path {
+  animation: walkToNontDesk 6.5s linear forwards !important;
+}
